@@ -23,24 +23,25 @@ function galleryMarkupCreator(picsArray) {
 
 const markup = galleryMarkupCreator(galleryItems);
 
-console.log(markup);
-
 galleryParent.insertAdjacentHTML("beforeend", markup);
 
 galleryParent.addEventListener("click", onClick);
 
 function onClick(evt) {
   evt.preventDefault();
-  console.log(evt.target.dataset);
-  if (!evt.target.classList.contains("gallery__image")) {
-    console.log("мимо");
-    return;
-  }
 
   window.addEventListener("keydown", onKeydown);
-  const instance = basicLightbox.create(`
+  window.addEventListener;
+  const instance = basicLightbox.create(
+    `
     <img src="${evt.target.dataset.source}" class="gallery__image">
-`);
+`,
+    {
+      onClose: () => {
+        window.removeEventListener("keydown", onKeydown);
+      },
+    }
+  );
   instance.show();
 
   function onKeydown(evt) {
@@ -48,6 +49,5 @@ function onClick(evt) {
       window.removeEventListener("keydown", onKeydown);
       instance.close();
     }
-    console.log(evt);
   }
 }
