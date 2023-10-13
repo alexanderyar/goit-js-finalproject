@@ -33,7 +33,6 @@ function onClick(evt) {
     return;
   }
   window.addEventListener("keydown", onKeydown);
-  window.addEventListener;
   const instance = basicLightbox.create(
     `
     <img src="${evt.target.dataset.source}" class="gallery__image">
